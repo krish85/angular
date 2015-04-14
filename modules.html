@@ -1,0 +1,74 @@
+<html>
+<head>
+	<title>Apps and Modules</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+</head>
+<body ng-app="myapp" ng-controller="appCtrl">
+	<div id="page-wrapper">
+
+    <form class="form-inline" role="form">
+        <div class="form-group">
+            <label>Application:</label>
+            <input type="text" class="form-control" ng-model="aname">
+        </div>
+        <div class="form-group">
+            <br><label>Module:</label>
+            <input type="text" class="form-control" ng-model="modl">
+            <button type="button" ng-click="addMod(textArea)">Add<i class="fa fa-check"></i> </button>
+            <button type="button">Remove<i class="fa fa-times"></i></button>
+            {{modules}}
+         </div>
+         <div>
+         	<textarea ng-model="modules[0]"> </textarea>
+         </div>
+        <div >
+        	 <table>
+        	 		<tr ng-repeat="mod in modules">
+        	 			<td>{{mod}}</td>
+        	 		</tr>
+        	 <table>
+        	 <div>
+        	  <select multiple class="form-control" ng-repeat="mod in modules">
+                <option>{{mod}}</option>
+            </select>
+        </div>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+
+    <div class="container">
+        <br><label><h3>Applications and their Modules</h3></label>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Application</th>
+                    <th>Module</th>
+                </tr>
+                <tr ng-repeat="x in modules">
+                    <td>{{x}}</td>
+                    <td>{{datum.mod}}}</td>
+                </tr>
+            </thead>
+
+        </table>
+    </div>
+</div>
+<script>
+	//var myAppModule = angular.controller('myapp', [ ]);
+	//myAppModule.controller('appCtrl', function($scope){
+			//$scope.aname = "";
+			var app = angular.module('myapp', []);
+			app.controller('appCtrl', function($scope){
+			$scope.modules = [];
+
+			$scope.addMod = function(){
+        	        	$scope.modules.push($scope.modl);
+        	        	console.log($scope.modules[0]);
+        	        }
+   			});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>Focus Directive</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+</head>
+<body ng-app="focus" ng-controller="focusCtrl">
+<button>Not Focused</button>
+<button ngbk-focus ng-click="clicked()">Im very Focused</button>
+<div> {{message.text}} </div>
+</body>
+<script>
+    var focusModule = angular.module('focus' ,[]);
+    focusModule.directive('ngbkFocus', function(){
+        // Runs during compile
+        return {	link: function(scope, element, attrs, controller) {
+            element[0].focus();
+        }
+        };
+    });
+
+    function focusCtrl($scope){
+        $scope.message = {text: "Nothing clicked yet"};
+
+        $scope.clicked = function(){
+            $scope.message = {text: "Focus is clicked"};
+        }
+    }
+</script>
+</html>

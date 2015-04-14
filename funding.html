@@ -1,0 +1,35 @@
+<html>
+<head>
+	<title>Funding</title>
+</head>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+<body ng-app="">
+	<div ng-controller="MyCtrl">
+		Amount: <input ng-change="computeNeeded()" ng-model="startingEstimate"> 
+		{{needed}}
+		<p> <button  ng-dblclick="count = count + 1" ng-model="find"> Click Me </button> </p>
+		{{count}}
+
+	</div>
+
+	<script>
+		function MyCtrl($scope){
+			$scope.startingEstimate = 1 ;
+			$scope.count = 0;
+			$scope.needed = $scope.startingEstimate * 1;
+			$scope.computeNeeded = function(){
+				$scope.needed = $scope.startingEstimate * 10;
+				window.alert("Sorry, please get more customers first.");
+			};
+			//$scope.$watch('startingEstimate', computeNeeded);
+			$scope.click = function(){
+				window.alert("Single Click");
+			};
+			$scope.dbl = function(){
+				window.alert("Double Click");
+			};
+		}
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+    <script src="https://code.angularjs.org/1.3.0-beta.5/angular.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.js"></script>
+    <script>
+        var app = angular.module('app', []);
+        app.controller('ctrl', function ($scope,$http) {
+            $scope.menus = [{"name":"Home","id":"1","subMenus":[{"name":"Home SubMenu-1","id":"11","subMenus":null},{"name":"Home SubMen-2","id":"13","subMenus":null},{"name":"Home SubMenu-3","id":"14","subMenus":null}]},{"name":"Learn","id":"2","subMenus":[{"name":"Learn SubMenu-1","id":"11","subMenus":null},{"name":"Learn SubMenu-2","id":"12","subMenus":null},{"name":"Learn SubMenu-3","id":"12","subMenus":null}]},{"name":"Connect","id":"3","subMenus":[{"name":"Connect SubMenu-1","id":"11","subMenus":null},{"name":"Connect SubMenu-2","id":"12","subMenus":null},{"name":"Connect SubMenu-3","id":"12","subMenus":null}]},{"name":"Career","id":"4","subMenus":[{"name":"Career SubMenu-1","id":"11","subMenus":null},{"name":"Career SubMenu-2","id":"12","subMenus":null}]},{"name":"Insights","id":"5","subMenus":[{"name":"Flight Risk","id":"51","subMenus":null},{"name":"Career Development","id":"52","subMenus":null},{"name":"Candidate Acceptance","id":"53","subMenus":null},{"name":"Job Transitions","id":"54","subMenus":null},{"name":"Career Development","id":"55","subMenus":null},{"name":"Manager Effectiveness","id":"56","subMenus":null},{"name":"Skills Matrix","id":"57","subMenus":null},{"name":"Compliance Risk","id":"58","subMenus":null}]},{"name":"Reports","id":"6","subMenus":[{"name":"Reports SubMenu-1","id":"61","subMenus":null},{"name":"Reports SubMenu-2","id":"62","subMenus":null}]},{"name":"StandardReports","id":"7","subMenus":null}];
+            //$http.get("http://122.165.107.132:8085/flight-risk/rest/json/getTopMenus").success(function(response){$scope.menus = response;});
+
+        });
+        app.directive('accordion', function () {
+            return {
+                restrict: 'E',
+                scope: { menus: '='},
+                templateUrl: 'panelTemplate.html',
+                link: function (scope, element, attr) {
+                    scope.parentId = attr.id;
+                }
+
+            }
+        });
+    </script>
+  </head>
+
+  <body ng-app="app" ng-controller="ctrl">
+    <script type="text/ng-template" id="panelTemplate.html">
+        <div id="{{parentId}}">
+            <div class="panel" ng-repeat="item in menus">
+                <a href="#" data-toggle="collapse" data-parent="#{{parentId}}" data-target="#child{{$index}}" ng-click="menus.selected = item"> {{item.name}}
+                </a>
+                <div id="child{{$index}}" ng-class="{'collapse':true}">
+                    <ul>
+                        <li ng-repeat="subitem in item.subMenus">{{subitem.name}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </script>
+    <accordion menus="menus" id="test"></accordion>
+  </body>
+
+</html>

@@ -1,0 +1,23 @@
+<html>
+<head>
+	<title>Album</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+</head>
+<body ng-app='myApp'>
+	<script>
+		var myAppModule = angular.module('myApp', []);
+		var albums = [{track: 'Roja', duration: '0.5' },{track: 'Virumandi', duration: '1.5'},{track: 'Varalaru', duration: '2.5'}];
+		myAppModule.controller('myCtrl', function ($scope){
+			$scope.albums = albums;
+			});
+	</script>
+
+<table ng-controller='myCtrl'>
+	<tr ng-repeat='album in albums'>
+		<td> {{ $index+1 }}</td>
+		<td> {{ album.track }} </td>
+		<td> {{ album.duration }} </td>
+	</tr>
+</table>
+</body>
+</html>

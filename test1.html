@@ -1,0 +1,23 @@
+<html>
+<head>
+	<title>Testing for Babu</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+</head>
+<body ng-app="" ng-controller="Ctrl">
+	<ui ng-repeat="x in json">
+		<li>
+			{{ x.name }}
+		</li>
+	</ui>
+
+</body>
+<script type="text/javascript">
+	function Ctrl($scope){
+		$scope.json = [{name:'df',nondeleteable:'true'}, {name:'dfd',nondeleteable:'true'}, {name:'dfdg',nondeleteable:'true'}, {name:'dfdgf',nondeleteable:'false'}];
+		//$scope.json = [
+//{name:'Jani',country:'Norway'},
+//{name:'Hege',country:'Sweden'},
+//{name:'Kai',country:'Denmark'}];
+	}
+</script>
+</html>

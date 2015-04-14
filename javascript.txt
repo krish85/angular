@@ -1,0 +1,74 @@
+alert("Hello, World");
+
+var surname = prompt('Greetings friend, may I enquire as to your surname?');   -> to get popo up username password
+
+var name = "Tom";
+var age = 20;
+
+var apples = 5, pears = 10;
+var piecesOfFruit = apples + pears;
+
+To find out when two values are equal, use the triple equals operator (“===”).
+15.234 === 15.234   --> true
+15.234 !== 18.4545  --> true
+
+It’s important to know that strings containing a number and an actual number are not equal.
+'10' === 10  --> false
+
+if, while, for similar to Java
+
+function
+
+var add = function (a, b) {
+    return a + b;
+};
+var result = add(1, 2);
+
+Objects:
+JavaScript objects are like a real life objects; they have properties and abilities. A JavaScript object is, in that sense, a collection of named properties and methods - a function. An object can be stored in a variable, and the properties and methods accessed using the dot syntax.
+A human, for example, has a name and an age, and could talk, move or learn JavaScript. Name and age are properties of the human, and are essentially pieces of data. Talking, moving and learning are more like functions - there’s some complex behavior involved. When a JavaScript object has such an ability, it is called a method.
+
+var jedi = {
+    name: "Yoda",
+    age: 29,
+    talk: function () { alert("another... Sky... walk..."); }
+};
+
+get variables and methods using dot => jedi.name jedi.age jedi.talk()
+add variables and methods => jedi.name = "Suresh"  -- re-assigning
+						  => jedi.school = "smrv"
+						  
+Properties can be any kind of data including objects and arrays. Adding an object as a property of another object creates a nested object:
+
+
+var person = {
+    age: 122
+};
+
+person.name = {
+    first: "Jeanne",
+    last: "Calment"
+};
+
+var shoppingList = ['Milk', 'Bread', 'Beans'];
+shoppingList.push('A new car');
+shoppingList.pop();
+
+Getting an Element:
+var pageHeader = document.getElementById('page-header');
+
+document.getElementsByTagName works in much the same way as getElementById, except that it takes a tag name (a, ul, li, etc) instead of an ID and returns a NodeList, which is essentially an array of the DOM Elements.
+
+document.getElementsByClassName returns the same kind of NodeList as getElementsByTagName, except that you pass a class name to be matched, not a tag name.
+var pageHeader = document.querySelector('#header');
+var buttons = document.querySelectorAll(.btn);
+querySelector, like getElementById, returns only one element whereas querySelectorAll returns a NodeList. If multiple elements match the selector you pass to querySelector, only the first will be returned.
+
+
+Events and Callbacks
+var handleClick = function (event) {
+    // do something!
+};
+
+var button = document.querySelector('#big-button');
+button.addEventListener('click', handleClick);

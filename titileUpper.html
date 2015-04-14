@@ -1,0 +1,30 @@
+<html>
+<head>
+	<title>Setup Title</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+</head>
+<body>
+	<div ng-app="myAPP" ng-controller="UpCtrl">
+		<input type="text" ng-model="titleName">
+		{{titleName | titleCase}}
+	</div>
+
+</body>
+<script>
+	var myModule = angular.module('myAPP', []);
+	myModule.filter('titleCase', function(){
+		var titleFilter = function(input){
+			var words = input.split(' ');
+			for (var i = 0; i < words.length; i++) {
+				words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+			}
+			return words.join(' ');
+		}
+		return titleFilter;
+	}
+		);
+	function UpCtrl($scope){
+		$scope.titleName = "hello there dear";
+	}
+</script>
+</html>

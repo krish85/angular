@@ -1,0 +1,34 @@
+<html ng-app="MyApp">
+	<head>
+		<title> Hello World App </title>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	</head>
+		<body>
+			<div ng-controller="helloCtrl">
+				<p> Name : <input type="text" ng-model="Name"> </p>
+				<p> Age  : <input type="text" ng-model="Age"></p>
+
+				<p> {{ Name }} </p>
+				<ui>
+					<li ng-repeat="item in items">
+						 {{ item.title }}  {{ item.quantity }} {{ item.quantity * item.price }} 
+						 <button ng-click="remove($index)"> Remove </button>
+					</li>
+				</ui>
+
+		<script>	
+			var myAppModule = angular.module('MyApp', []);
+			myAppModule.controller('helloCtrl', function($scope){
+					$scope.Name = "Suresh";
+					$scope.Age = "30";
+					$scope.items=[	{title: 'Orange', quantity: 10, price: 20.50},
+									{title: 'Apple', quantity: 7, price: 34},
+									{title: 'Banana', quantity: 15, price: 15.30}
+									];
+				    $scope.remove = function(index){
+				    	$scope.items.splice(index, 1);
+				    }
+				});
+	    </script>
+	</body>
+</html>

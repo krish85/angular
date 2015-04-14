@@ -1,0 +1,33 @@
+<html>
+<head>
+	<title>Menu Display</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+</head>
+<body ng-app="MenuApp">
+	<div ng-controller="MenuCtrl">
+		<button ng-mouseover="showMenu()" ng-mouseleave="hideMenu()"> Show Menu </button>
+		<ui ng-show="menuState.show" ng-repeat="menu in menus">
+			<li>{{menu.name}}</li>
+		</ui>
+
+	</div>
+	<script>
+		var menuModule = angular.module('MenuApp', ['ui.bootstrap']);
+		menuModule.controller('MenuCtrl', function($scope){
+			$scope.menuState = { show: "false"};
+			$scope.menus = [{"name":"Home","id":"1"},{"name":"Learn","id":"2"},{"name":"Courses","id":"3"}];
+			$scope.showMenu = function(){
+					$scope.menuState.show = true;
+			};
+			$scope.hideMenu = function(){
+					$scope.menuState.show = false;
+			};
+			
+		});
+		
+	</script>
+
+</body>
+</html>
